@@ -1,6 +1,20 @@
 self: super: with self; {
   python = super.python.override {
     packageOverrides = python-self: python-super: {
+      flask-helloworld = pkgs.python3Packages.buildPythonApplication rec {
+        name = "flask-hello-world-${version}";
+        version = "0.1.0";
+
+        src = fetchgit {
+          url = "https://github.com/knedlsepp/flask-hello-world.git";
+          rev = "bdbf707832e432a7c7af8d0207656b5a130c38ad";
+          sha256 = "1ahhra915zlc1z2xmyy6589rsknvrx0fz1y8nwv6ayw402kgq70b";
+        };
+
+        propagatedBuildInputs = with python3Packages; [
+          flask
+        ];
+      };
       pytest-flask = pythonPackages.buildPythonPackage rec {
         name = "pytest-flask-${version}";
         version = "0.10.0";        src = pkgs.fetchurl {
@@ -55,25 +69,9 @@ self: super: with self; {
           flask_sqlalchemy
           pytestcov
         ];
-
       };
     };
   };
   pythonPackages = python.pkgs;
-
-  flask-helloworld = pkgs.python3Packages.buildPythonApplication rec {
-    name = "flask-hello-world-${version}";
-    version = "0.1.0";
-
-    src = fetchgit {
-      url = "https://github.com/knedlsepp/flask-hello-world.git";
-      rev = "bdbf707832e432a7c7af8d0207656b5a130c38ad";
-      sha256 = "1ahhra915zlc1z2xmyy6589rsknvrx0fz1y8nwv6ayw402kgq70b";
-    };
-
-    propagatedBuildInputs = with python3Packages; [
-      flask
-    ];
-  };
 
 }
