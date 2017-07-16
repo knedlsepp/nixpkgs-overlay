@@ -7,8 +7,8 @@ self: super: with self; {
 
         src = fetchgit {
           url = "https://github.com/knedlsepp/flask-hello-world.git";
-          rev = "bdbf707832e432a7c7af8d0207656b5a130c38ad";
-          sha256 = "1ahhra915zlc1z2xmyy6589rsknvrx0fz1y8nwv6ayw402kgq70b";
+          rev = "b80dc38f9087281e156c8ae521fe12b6e1e5db0d";
+          sha256 = "1hj1k3wlw0jqhkgjankdsmzxq21zkn548xr1kacjbv8w3shpdca3";
         };
 
         propagatedBuildInputs = with python3Packages; [
