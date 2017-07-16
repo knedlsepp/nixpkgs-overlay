@@ -60,4 +60,20 @@ self: super: with self; {
     };
   };
   pythonPackages = python.pkgs;
+
+  flask-helloworld = pkgs.python3Packages.buildPythonApplication rec {
+    name = "flask-hello-world-${version}";
+    version = "0.1.0";
+
+    src = fetchgit {
+      url = "https://github.com/knedlsepp/flask-hello-world.git";
+      rev = "bdbf707832e432a7c7af8d0207656b5a130c38ad";
+      sha256 = "1ahhra915zlc1z2xmyy6589rsknvrx0fz1y8nwv6ayw402kgq70b";
+    };
+
+    propagatedBuildInputs = with python3Packages; [
+      flask
+    ];
+  };
+
 }
