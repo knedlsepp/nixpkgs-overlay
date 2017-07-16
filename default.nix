@@ -10,8 +10,7 @@ self: super: with self; {
           rev = "b80dc38f9087281e156c8ae521fe12b6e1e5db0d";
           sha256 = "1hj1k3wlw0jqhkgjankdsmzxq21zkn548xr1kacjbv8w3shpdca3";
         };
-
-        propagatedBuildInputs = with python3Packages; [
+        propagatedBuildInputs = with pythonPackages; [
           flask
         ];
       };
