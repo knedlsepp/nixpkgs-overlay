@@ -1,7 +1,7 @@
 self: super: with self; {
   python = super.python.override {
     packageOverrides = python-self: python-super: {
-      flask-helloworld = pkgs.python3Packages.buildPythonApplication rec {
+      flask-helloworld = pythonPackages.buildPythonPackage rec {
         name = "flask-hello-world-${version}";
         version = "0.1.0";
 
