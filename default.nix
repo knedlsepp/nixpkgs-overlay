@@ -1,5 +1,11 @@
 self: super: with self; {
-  python = super.python.override {
+
+  python27 = super.python27.override pythonOverrides;
+  python27Packages = super.recurseIntoAttrs (python27.pkgs);
+  python36 = super.python36.override pythonOverrides;
+  python36Packages = super.recurseIntoAttrs (python36.pkgs);
+
+  pythonOverrides = {
     packageOverrides = python-self: python-super: {
       flask-helloworld = pythonPackages.buildPythonPackage rec {
         name = "flask-hello-world-${version}";
@@ -71,6 +77,4 @@ self: super: with self; {
       };
     };
   };
-  pythonPackages = python.pkgs;
-
 }
